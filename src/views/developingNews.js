@@ -6,6 +6,7 @@ import {API_KEY} from '../utils/data';
 
 
 
+
 let developingList = [];
 
 const DevelopingNews = (props) =>{
@@ -38,77 +39,54 @@ const DevelopingNews = (props) =>{
 
 
     return (
-      <div className=' developing-news container '>
-        {
-          !developingLoading
-          ?(
+      <div className=' developing-news container  '>
+        
+          {/*start of news row */}
+       
+            {
 
-            <div className='row'>
+                !developingLoading
+                ? ( <div className='row d-flex justify-content-center mt-4'>     
 
+                          {
+                            developingList.map((story,index)=>{
+                             if( index < 6 ){
+                              return (
+                                <div className='col-12 col-md-6  d-flex align-items-stretch ' key={index}>
+                                      <NewsCardBig newsList={story} />
+                              </div>
+                              )
 
-                <div className='row d-flex justify-content-center'>
-                
-                                <div className='col-12 col-md-12 col-lg-4'>
-                                      <NewsCardBig newsList={developingList[0]} />
-                                </div>
-                                 <div className='col-12 col-md-6 col-lg-4'>
-                                     <div className='row'>
-                                     <NewsCardBig newsList={developingList[1]} />
-                                        </div>
-                                     <div className='row'>
-                                     <NewsCardBig newsList={developingList[2]} />
-                                        </div>
-                                </div>
-
-              
-                         </div>
-                         <div className='col-12 col-md-'>
-                                <div className='row'>
-                                  <NewsCardBig newsList={developingList[3]} />
-
-                                    </div>
-                                <div className='row'>
-                                  <NewsCardBig newsList={developingList[4]} />
-
-                                    </div>
-                                <div className='row'>
-                                  <NewsCardBig newsList={developingList[5]} />
-                                    </div>
-                           </div>
-
-                <div className='row d-flex justify-content-center'>
-                          
-                {
-                  developingList.map((story,index)=>{
-                    if(index > 5 && index < 8) {
-                      return ( <div className='col-6' key={index}>                    
-                                    <NewsCardBig newsList={story} />
-                              </div>)
-                        }else return null
-
-                  })
-                }
+                             } else return null ;
+                            })
+                          }     
+                         
+                    </div>)
+                : <p>Loading ... </p>
+            }
+               
               
 
-              {
-                  developingList.map((story,index)=>{
-                    if(index > 7 ) {
-                      return ( <div className='col-4' key={index}>                    
-                                    <NewsCardBig newsList={story} />
-                              </div>)
-                        } else return null
-                  })
-             }
-                  </div>
+                        {
 
+                        !developingLoading 
+                        ? (<div className='row d-felx justify-content-center'>
+                            {
+                            developingList.map((story,index)=>{
+                              if(index > 5 ) {
+                                return ( <div className='col-12 col-md-6 col-lg-4  d-flex align-items-stretch' key={index}>                    
+                                              <NewsCardBig newsList={story} />
+                                        </div>)
+                                              } else return null
+                                        })
+                                  }
+                          </div>
 
+                              )
+                          : <p>Loadign ... </p>
+                        }
               
-               </div>
           
-          )
-
-          : <p> Loading ...</p>
-        }
       </div>
     )
 }

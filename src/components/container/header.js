@@ -4,33 +4,89 @@ import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 
+const topics = [ "us","home", "politics", "health", "arts",  "sundayreview","automobiles", "books", "business", 
+"fashion", "food",  "insider", "magazine", 
+"movies", "obituaries", "opinion",  "science", "sports",
+ "technology", "theater", "t-magazine", 
+ "travel", "upshot"];
+
 const Header = (props) =>{
 
-        const [expand,setExpanded] = useState(true);
+        const [expand,setExpanded] = useState(false);
+      
 
     return(
-        <Navbar expand={expand}>
+        <div className='header'>
+             <Navbar  expand="lg" expanded={expand}>
                 <Navbar.Brand >
                         MaNews
                     </Navbar.Brand>           
 
-                    <Navbar.Toggle aria-controls='#header-collapse' 
-                                    className="toggleButton"
-                                    onClick={()=>{setExpanded((prev)=>{prev=!prev})}} 
-                    />
-
-                
-                    <Navbar.Collapse id='header-collapse'>
-                        <Nav>
-                            <NavLink to='/' exact onClick={()=>{setExpanded(false)}}>
+                  
+                        <Nav className='mx-auto'>
+                         
+                           <NavLink to='/' exact 
+                            className='d-inline-block'
+                            onClick={()=>{setExpanded(false)}}>
                                     Developing Stories
                             </NavLink>
-                            <NavLink exact className='ml-2' to='/world' onClick={()=>{setExpanded(false)}}  >
-                                    World
-                            </NavLink>
+                         
+                        
                         </Nav>
-                    </Navbar.Collapse>
+
+                        <Navbar.Toggle aria-controls='#header-collapse' 
+                                    className=" toggleButton"
+                                    aria-expanded="false"
+                                    onClick={() => setExpanded((prevExpanded)=>(prevExpanded=!prevExpanded))}
+                                   
+                    />
+
+                   
         </Navbar>
+
+                {
+                    expand?(
+                        <div className='header-links container' >
+
+                        <div className='row header-links-expand' style={{height:'100vh'}}>
+                            <div className='col-6'>
+                                <ul>
+                                    {
+                                        topics.map((topic,index)=>{
+                                            if(index < (topics.length / 2)){
+                                                return(
+                                                    <li key={index}> {topic}</li>
+                                                )
+                                            }else return null   
+                                        })
+                                    } 
+                                </ul>
+                            </div>
+                            <div className='col-6'>
+                                <ul>
+                                    {
+                                        topics.map((topic,index)=>{
+                                            if(index > (topics.length / 2)){
+                                                return(
+                                                    <li key={index}> {topic}</li>
+                                                )
+                                            }else return null   
+                                        })
+                                        }
+                                     
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    )
+                        : null
+                }
+               
+        </div>
+       
     )
 }
 

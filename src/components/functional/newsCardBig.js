@@ -1,6 +1,6 @@
 
 import {useEffect, useState} from 'react';
-
+import nyt from '../../assets/nyt.jpg';
 
 
 const NewsCardBig = (props) =>{
@@ -58,7 +58,10 @@ const NewsCardBig = (props) =>{
         <div className="card mb-3">
             {
                 props.newsList 
-                ?  props.newsList.multimedia?  <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>:null
+                ?  props.newsList.multimedia
+                        ? <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>
+                        :<img className="card-img-top card-img" src={nyt} alt=""/>
+                        
                 : null
             }
           
@@ -67,16 +70,14 @@ const NewsCardBig = (props) =>{
                     props.newsList 
                     ? (<div> 
                             <h5 className="card-title">{props.newsList.title}</h5>
-                          { props.newsList.abstract ?<p className="card-text">{props.newsList.abstract}</p>:null}
+                          { props.newsList.abstract ?<p className="card-text story-abstract">{props.newsList.abstract}</p>:null}
                             <hr/>
                             <p className="card-text">{props.newsList.byline}</p>
-                            <p className="card-text"><small className="text-muted"> {updated} </small></p>
+                            <p className="card-text updated-text appText"><small className="text-muted"> {updated} </small></p>
                         </div>)
                     :<p></p>
 
                 }
-             
-
             </div>
        </div>
     )
