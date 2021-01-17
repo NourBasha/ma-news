@@ -1,25 +1,31 @@
 
+import {useState} from 'react';
 import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 
 const Header = (props) =>{
+
+        const [expand,setExpanded] = useState(true);
+
     return(
-        <Navbar >
+        <Navbar expand={expand}>
                 <Navbar.Brand >
                         MaNews
                     </Navbar.Brand>           
 
-                    <Navbar.Toggle aria-controls='#header-collapse'>
+                    <Navbar.Toggle aria-controls='#header-collapse' 
+                                    className="toggleButton"
+                                    onClick={()=>{setExpanded((prev)=>{prev=!prev})}} 
+                    />
 
-                    </Navbar.Toggle>
-
+                
                     <Navbar.Collapse id='header-collapse'>
                         <Nav>
-                            <NavLink to='/' exact>
-                                    Home
+                            <NavLink to='/' exact onClick={()=>{setExpanded(false)}}>
+                                    Developing Stories
                             </NavLink>
-                            <NavLink className='ml-2' to='/world' exact>
+                            <NavLink exact className='ml-2' to='/world' onClick={()=>{setExpanded(false)}}  >
                                     World
                             </NavLink>
                         </Nav>

@@ -2,7 +2,7 @@ import { Route, Router, Switch } from "react-router";
 import Header from "../components/container/header";
 import history from '../utils/history';
 
-import Home from '../views/home';
+import DevelopingNews from '../views/developingNews';
 import World from "../views/world";
 
 const Routes = (props) => {
@@ -11,7 +11,7 @@ const Routes = (props) => {
       <Router history={history}>
                 <Header />
             <Switch>
-                      <Route exact path='/' component={Home} />
+                      <Route exact path='/' component={DevelopingNews} />
                       <Route exact  path='/world' component={World} />
             </Switch>
       </Router>
