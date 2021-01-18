@@ -3,7 +3,8 @@ import Header from "../components/container/header";
 import history from '../utils/history';
 
 import DevelopingNews from '../views/developingNews';
-import World from "../views/world";
+import FirstStylePage from '../views/firstStylePage';
+import SecondStylePage from "../views/secondStylePage";
 
 const Routes = (props) => {
   return (
@@ -12,7 +13,8 @@ const Routes = (props) => {
                 <Header />
             <Switch>
                       <Route exact path='/' component={DevelopingNews} />
-                      <Route exact  path='/world' component={World} />
+                      <Route exact  path='/top-stories/:name' render={(target)=> <FirstStylePage target={target}  /> }/>
+                      <Route exact  path='/topStories/:name' render={(target)=> <SecondStylePage target={target}  /> }/>
             </Switch>
       </Router>
     </div>

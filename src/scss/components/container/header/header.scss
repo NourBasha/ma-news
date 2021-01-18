@@ -1,0 +1,43 @@
+.header{
+   background-color: $color-main;
+    //  transition: all ease-out 0.3s;
+
+    .header-links{
+        // transition: all 0.50s linear ;
+        position: absolute;
+        top: 55px;
+        z-index: 2;
+        
+        background-color: $color-main ;
+        background: linear-gradient($color-secondary-soft, $color-main-soft 60%) ;
+
+        .header-links-expand{
+            // transition: all 2s linear ;
+            ul {
+                margin-top: 20px;
+                list-style: none;
+                text-align: center;
+                li{
+                    padding: 10px 40px 10px 40px;
+                    a {
+                        padding: 0px 30px;
+
+                        color: white;
+                        font-size: 20px;
+                        text-decoration: none;
+                        &:hover {
+                            color: aqua;
+                        }
+                    }
+                    &:hover {
+                        transform:  scale(1.6);
+                        padding: 10px 40px 10px 40px;
+
+                    }
+                }
+            }
+        }
+
+            
+    }
+}

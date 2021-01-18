@@ -2,9 +2,9 @@
 import {useState} from 'react';
 import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
-const topics = [ "us","home", "politics", "health", "arts",  "sundayreview","automobiles", "books", "business", 
+const topics = [ "home", "us", "politics", "health", "arts",  "sundayreview","automobiles", "books", "business", 
 "fashion", "food",  "insider", "magazine", 
 "movies", "obituaries", "opinion",  "science", "sports",
  "technology", "theater", "t-magazine", 
@@ -35,7 +35,7 @@ const Header = (props) =>{
                         </Nav>
 
                         <Navbar.Toggle aria-controls='#header-collapse' 
-                                    className=" toggleButton"
+                                    className=" toggleButton d-block"
                                     aria-expanded="false"
                                     onClick={() => setExpanded((prevExpanded)=>(prevExpanded=!prevExpanded))}
                                    
@@ -46,16 +46,24 @@ const Header = (props) =>{
 
                 {
                     expand?(
-                        <div className='header-links container' >
+                        <div className='header-links container-fluid' >
 
                         <div className='row header-links-expand' style={{height:'100vh'}}>
                             <div className='col-6'>
-                                <ul>
+                                <ul className=''>
                                     {
                                         topics.map((topic,index)=>{
                                             if(index < (topics.length / 2)){
+                                                topic = topic.charAt(0).toUpperCase() + topic.slice(1);
                                                 return(
-                                                    <li key={index}> {topic}</li>
+                                                    
+                                                 <li key={index}  onClick={()=>{setExpanded(false)}}>
+                                                            <Link 
+                                                            to={{pathname:`/top-stories/${topic}`}} >
+                                                                   {topic}
+                                                            </Link>
+                                                   
+                                                      </li>
                                                 )
                                             }else return null   
                                         })
@@ -67,8 +75,15 @@ const Header = (props) =>{
                                     {
                                         topics.map((topic,index)=>{
                                             if(index > (topics.length / 2)){
+                                                topic = topic.charAt(0).toUpperCase() + topic.slice(1);
                                                 return(
-                                                    <li key={index}> {topic}</li>
+                                                    <li key={index}  onClick={()=>{setExpanded(false)}}>
+                                                    <Link 
+                                                    to={{pathname:`/topStories/${topic}`}} >
+                                                           {topic}
+                                                    </Link>
+                                           
+                                              </li>
                                                 )
                                             }else return null   
                                         })

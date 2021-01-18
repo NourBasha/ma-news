@@ -60,8 +60,7 @@ const NewsCardBig = (props) =>{
                 props.newsList 
                 ?  props.newsList.multimedia
                         ? <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>
-                        :<img className="card-img-top card-img" src={nyt} alt=""/>
-                        
+                        :<img className="card-img-top card-img" src={nyt} alt=""/>                      
                 : null
             }
           

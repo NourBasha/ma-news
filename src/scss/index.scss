@@ -1,6 +1,10 @@
 
 
+$color-main: #5e1f1a ;
+$color-main-soft:#5c302dda;
+$color-secondary:#174d17;
+$color-secondary-soft:#264626e3;
 
 
-@import './components/header/header.scss';
+@import './components/container/header/header.scss';
 @import './components/functional/newsCardBig.scss'; 
