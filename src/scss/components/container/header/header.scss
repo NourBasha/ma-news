@@ -1,6 +1,25 @@
 .header{
    background-color: $color-main;
-    //  transition: all ease-out 0.3s;
+
+
+    .header-nav{
+        flex-direction: row;
+
+        .menu-link{
+            display: none;
+        }
+      
+        a{
+            text-decoration: none;
+            color: white;
+            &:active{
+                color: aqua;
+            }
+        }
+        .active{
+            color: aquamarine;
+        }
+    }
 
     .header-links{
         // transition: all 0.50s linear ;

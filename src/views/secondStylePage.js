@@ -14,8 +14,6 @@ const SecondStylePage = (props)=>{
 
   const getSpecificNews = useCallback((name)=>{
 
-    console.log('inside use callback');
-    console.log('inside name : '+name);
 
 
      axios.get(`https://api.nytimes.com/svc/topstories/v2/${name}.json?api-key=${API_KEY}`)
@@ -37,15 +35,12 @@ const SecondStylePage = (props)=>{
 
   useEffect(()=>{
 
-    console.log('inside use effect');
 
     if(props.target.match.params.name){
-        console.log('inside use effect if');
         setNewsLoading(true);
         getSpecificNews(props.target.match.params.name);
 
     }else {
-        console.log('inside use effect else ');
 
     }
     

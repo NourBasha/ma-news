@@ -14,9 +14,7 @@ const FirstStylePage = (props)=>{
 
   const getSpecificNews = useCallback((name)=>{
 
-    console.log('inside use callback');
-    console.log('inside name : '+name);
-
+    console.log('coming link  is :',name);
 
      axios.get(`https://api.nytimes.com/svc/topstories/v2/${name}.json?api-key=${API_KEY}`)
     .then((res)=>{
@@ -27,7 +25,7 @@ const FirstStylePage = (props)=>{
           }
     })
     .catch((err)=>{
-
+      console.log('err : ',err);
     })
     .finally(()=>{
 
@@ -37,15 +35,13 @@ const FirstStylePage = (props)=>{
 
   useEffect(()=>{
 
-    console.log('inside use effect');
 
     if(props.target.match.params.name){
-        console.log('inside use effect if');
+      console.log('link :',props.target.match.params.name);
         setNewsLoading(true);
         getSpecificNews(props.target.match.params.name);
 
     }else {
-        console.log('inside use effect else ');
 
     }
     

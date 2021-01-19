@@ -11,7 +11,9 @@ let developingList = [];
 
 const DevelopingNews = (props) =>{
 
+
   const [developingLoading, setDevelopingLoading] = useState(true);
+
 
   const getDevelopingNews = useCallback(()=>{
 
@@ -19,6 +21,7 @@ const DevelopingNews = (props) =>{
     .then((res)=>{
           if(res){
             developingList = res.data.results;
+            console.log(developingList);
             setDevelopingLoading(false);
           }
     })

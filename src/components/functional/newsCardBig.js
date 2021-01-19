@@ -1,6 +1,7 @@
 
 import {useEffect, useState} from 'react';
 import nyt from '../../assets/nyt.jpg';
+// import { useHistory } from 'react-router';
 
 
 const NewsCardBig = (props) =>{
@@ -49,13 +50,15 @@ const NewsCardBig = (props) =>{
           }
        }
     }
+    
 
     useEffect(()=>{
         updatedAt();
     })
 
+
     return(
-        <div className="card mb-3">
+        <div className="card mb-3"  onClick={()=>{window.location.href = props.newsList.url }}>
             {
                 props.newsList 
                 ?  props.newsList.multimedia
