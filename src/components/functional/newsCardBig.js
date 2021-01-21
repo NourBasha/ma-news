@@ -1,7 +1,6 @@
 
 import {useEffect, useState} from 'react';
-import nyt from '../../assets/nyt.jpg';
-import ProgressiveImage from 'react-progressive-image';
+// import nyt from '../../assets/nyt.jpg';
 import Skeleton from 'react-loading-skeleton';
 
 // import { useHistory } from 'react-router';

@@ -18,5 +18,6 @@ $color-header-links-2:#0e7e7e79;
 }
 
 
-@import './components/container/header/header.scss';
+@import './components/container/header.scss';
 @import './components/functional/newsCardBig.scss'; 
+@import './components/container/search.scss'

@@ -3,6 +3,8 @@ import {useState} from 'react';
 import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink, Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setSearchContent, setSearchTiming} from '../../store/actions/actions';
 
 let topics = [ "us", "politics", "health", "arts",  "sundayreview","automobiles", "books", "business", 
 "fashion", "food",  "insider", "magazine", 
@@ -22,7 +24,10 @@ const Header = (props) =>{
 
             setExpanded(false);
             setMenuLink(e.target.text);
-            console.log(menuLink);
+
+            props.setSearchContentEmpty();
+            props.setSearchContentTimingEmpty();
+
 
             topics = topics.filter((val,index)=>{
                 if(e){
@@ -165,4 +170,12 @@ const Header = (props) =>{
     )
 }
 
-export default Header;
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        setSearchContentEmpty : () => {dispatch(setSearchContent(''))},
+        setSearchContentTimingEmpty : () => {dispatch(setSearchTiming(''))}
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Header);
