@@ -65,7 +65,11 @@ const DevelopingNews = (props) =>{
                           }     
                          
                     </div>)
-                : <p>Loading ... </p>
+                :  <div className="text-center row d-flex justify-content-center " style={{marginTop:'100px'}}>
+                        <div className="spinner-grow  text-danger m-5 "
+                      style={{width:'5rem', height:'5rem'}} role="status">
+                        </div>
+                     </div>
             }
                
               
@@ -86,7 +90,7 @@ const DevelopingNews = (props) =>{
                           </div>
 
                               )
-                          : <p>Loadign ... </p>
+                          : null
                         }
               
           

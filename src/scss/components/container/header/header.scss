@@ -1,23 +1,44 @@
+
+
 .header{
    background-color: $color-main;
 
+  .logo{
+      cursor: pointer;
+    .ma{
+        @extend %logoStyle;
+        color: $color-secondary;
+        font-size: 15px
+     }
+ 
+     .manews{
+       @extend %logoStyle ; 
+       color: white;
+       font-size: 24px;
+     }
+  }
 
     .header-nav{
         flex-direction: row;
 
+        .link{ // both top links
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
         .menu-link{
             display: none;
         }
+        
       
         a{
             text-decoration: none;
             color: white;
             &:active{
-                color: aqua;
+                color: $color-secondary;
             }
         }
         .active{
-            color: aquamarine;
+            color: $color-secondary;
         }
     }
 
@@ -28,7 +49,8 @@
         z-index: 2;
         
         background-color: $color-main ;
-        background: linear-gradient($color-secondary-soft, $color-main-soft 60%) ;
+        background: linear-gradient( $color-header-links  ,$color-header-links-2 95%),
+                    linear-gradient(  $color-header-links-2 ,  $color-header-links) ;
 
         .header-links-expand{
             // transition: all 2s linear ;

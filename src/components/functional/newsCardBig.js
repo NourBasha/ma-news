@@ -1,6 +1,9 @@
 
 import {useEffect, useState} from 'react';
 import nyt from '../../assets/nyt.jpg';
+import ProgressiveImage from 'react-progressive-image';
+import Skeleton from 'react-loading-skeleton';
+
 // import { useHistory } from 'react-router';
 
 
@@ -57,30 +60,44 @@ const NewsCardBig = (props) =>{
     })
 
 
-    return(
-        <div className="card mb-3"  onClick={()=>{window.location.href = props.newsList.url }}>
-            {
-                props.newsList 
-                ?  props.newsList.multimedia
-                        ? <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>
-                        :<img className="card-img-top card-img" src={nyt} alt=""/>                      
-                : null
-            }
-          
-            <div className="card-body">
-                {
-                    props.newsList 
-                    ? (<div> 
-                            <h5 className="card-title">{props.newsList.title}</h5>
-                          { props.newsList.abstract ?<p className="card-text story-abstract">{props.newsList.abstract}</p>:null}
-                            <hr/>
-                            <p className="card-text">{props.newsList.byline}</p>
-                            <p className="card-text updated-text appText"><small className="text-muted"> {updated} </small></p>
-                        </div>)
-                    :<p></p>
+    return( 
 
-                }
-            </div>
+        
+        <div className="card mb-3"  onClick={()=>{window.location.href = props.newsList.url }}>
+            {props.newsList 
+                ?
+                (<div> 
+                      
+                      
+                      {
+                          props.newsList.multimedia?  
+                          <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>
+                        :<Skeleton />
+                        }
+
+                     
+                     
+             
+          
+                     <div className="card-body">
+                         {
+                              <div> 
+                                     <h5 className="card-title">{props.newsList.title}</h5> 
+                                   { props.newsList.abstract ?<p className="card-text story-abstract">{props.newsList.abstract}</p>:null}
+                                     <hr/>
+                                     <p className="card-text">{props.newsList.byline}</p>
+                                     <p className="card-text updated-text appText"><small className="text-muted"> {updated} </small></p>
+                                 </div> 
+                            
+         
+                         }
+                     </div>
+                </div>)
+                
+               
+                                    
+                                    : <Skeleton count={5} duration={4}/>
+                                }
        </div>
     )
 }

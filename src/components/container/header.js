@@ -70,14 +70,17 @@ const Header = (props) =>{
         <div className='header'>
              <Navbar  expand="lg" expanded={expand}>
                 <Navbar.Brand >
-                        MaNews
+                           <div className='logo' onClick={()=>{window.location.href = '/'}}>
+                           <span className='ma'> Ma</span>
+                             <span className='manews'>News</span>
+                           </div>
                     </Navbar.Brand>           
 
                   
                         <Nav className='mx-lg-auto header-nav d-flex'>
                          
                            <NavLink to='/' exact 
-                            className='d-inline-block appText '
+                            className='d-inline-block appText link'
                             onClick={()=>{setExpanded(false)}}>
                                     Hot Stories
                             </NavLink>
@@ -85,7 +88,7 @@ const Header = (props) =>{
                          
                             <NavLink   
                                      to={groupNumber ===1 ? {pathname:`/top-stories/${menuLink}`}: {pathname:`/topStories/${menuLink}`}} 
-                                    className='d-inline-block menu-link ml-3 appText'
+                                    className='d-inline-block menu-link link ml-3 appText'
                                    >
                             </NavLink>
 

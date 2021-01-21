@@ -1,9 +1,21 @@
 
 
-$color-main: #5e1f1a ;
-$color-main-soft:#5c302dda;
-$color-secondary:#174d17;
-$color-secondary-soft:#264626e3;
+$color-main: #580101 ;
+$color-main-soft:#d8c5c36c;
+$color-secondary:#00e7e7;   
+$color-secondary-soft:#1a707075;
+
+
+$color-header-links: #58010181 ;
+$color-header-links-2:#0e7e7e79;   
+
+
+
+
+%logoStyle{
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
 
 
 @import './components/container/header/header.scss';
