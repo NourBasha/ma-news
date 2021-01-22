@@ -55,6 +55,7 @@ const NewsCardBig = (props) =>{
     
 
     useEffect(()=>{
+        console.log('inside CARD BIG! ')
         updatedAt();
     })
 

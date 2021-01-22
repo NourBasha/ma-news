@@ -87,12 +87,13 @@ const Header = (props) =>{
                            <NavLink to='/' exact 
                             className='d-inline-block appText link'
                             onClick={()=>{setExpanded(false)}}>
-                                    Hot Stories
+                                   Top Stories
                             </NavLink>
                          
                          
                             <NavLink   
-                                     to={groupNumber ===1 ? {pathname:`/top-stories/${menuLink}`}: {pathname:`/topStories/${menuLink}`}} 
+                                     to={groupNumber ===1 ? {pathname:`/top-stories/${menuLink}`}:
+                                      {pathname:`/topStories/${menuLink}`}} 
                                     className='d-inline-block menu-link link ml-3 appText'
                                    >
                             </NavLink>
@@ -116,7 +117,7 @@ const Header = (props) =>{
                         <div className='header-links container-fluid' >
 
                         <div className='row header-links-expand' style={{height:'100vh'}}>
-                            <div className='col-6'>
+                            <div className='col-md-6'>
                                 <ul className=''>
                                     {
                                         topics.map((topic,index)=>{
@@ -137,7 +138,7 @@ const Header = (props) =>{
                                     } 
                                 </ul>
                             </div>
-                            <div className='col-6'>
+                            <div className='col-md-6'>
                                 <ul>
                                     {
                                         topics.map((topic,index)=>{

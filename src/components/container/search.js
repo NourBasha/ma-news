@@ -5,7 +5,7 @@ import {setSearchContent, setSearchTiming} from '../../store/actions/actions';
 
 const Search = (props) => {
     const [query,setQuery] = useState('');
-    const [optionTime,setOptionTime] = useState('');
+    const [optionTime,setOptionTime] = useState('newest');
 
 
 
@@ -35,11 +35,11 @@ const Search = (props) => {
                 <div className='mb-3'>
                         <select className="form-control form-control-sm"
                          onChange={(e)=>{setOptionTime(e.target.value)}}
-                         value={optionTime}
+                         defaultValue={optionTime}
                          >
                                <option  value='newest'>Newest</option>
                                <option value='oldest'>Oldest</option>
-                               <option value='Relevance'>Most Relevant</option>     
+                               <option value='relevance'>Most Relevant</option>     
                         </select>
                 </div>
 
