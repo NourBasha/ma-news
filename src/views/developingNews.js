@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import NewsCardBig from '../components/functional/newsCardBig';
 import {API_KEY} from '../utils/data';
 
@@ -8,10 +8,15 @@ import {connect} from 'react-redux';
 import Search from '../components/container/search';
 import SearchCard from '../components/functional/searchCard';
 
+import Toggler from '../theme/toggler';
+import Context from '../utils/context';
+
 
 let developingList = [];
 
 const DevelopingNews = (props) =>{
+
+  const context = useContext(Context);
 
 
   const [developingLoading, setDevelopingLoading] = useState(true);
@@ -82,13 +87,14 @@ const DevelopingNews = (props) =>{
     return (
       <div className=' developing-news container-fluid  ' style={{paddingLeft:'2rem',paddingRight:'2rem'}}>
         
-        <button onClick={()=>{console.log(props.searchContent)}}> search content </button>
-
             <div className='row'>
 
+
               
-            <div className='col-md-2 d-none d-md-inline-block' style={{backgroundColor:'#d8c5c36c', marginTop:'20px' , borderRadius:'10px'}} >
-                         <div >
+            <div className='col-md-2 d-none d-md-inline-block pr-1 pl-0'  >
+            <Toggler toggleTheme={context.toggleTheme} />
+
+                         <div style={{backgroundColor:'#d8c5c36c', marginTop:'25px' ,padding:'10px 10px', borderRadius:'10px'}} >
                           <Search />
                         </div>        
             </div>
@@ -107,7 +113,7 @@ const DevelopingNews = (props) =>{
                              ?
                                 (   
                                   developingList.map((story,index)=>{
-                                   if( index < 6 ){
+                                   if( index < 2 ){
                                     return (
                                       <div className='col-12 col-md-6  d-flex align-items-stretch ' key={index}>
       
@@ -123,7 +129,6 @@ const DevelopingNews = (props) =>{
                                
                                  return (
                                    <div className='col-12 col-md-6  d-flex align-items-stretch' key={index}>
-   
                                          <SearchCard newsList={story} />
                                  </div>
                                  )
@@ -162,7 +167,7 @@ const DevelopingNews = (props) =>{
                                (<div className='row d-felx justify-content-center'>
                             {
                             developingList.map((story,index)=>{
-                              if(index > 5 ) {
+                              if(index > 1 ) {
                                 return ( <div className='col-12 col-md-6 col-lg-4  d-flex align-items-stretch' key={index}>                    
                                               <NewsCardBig newsList={story} />
                                         </div>)

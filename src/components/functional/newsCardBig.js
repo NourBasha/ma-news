@@ -55,7 +55,6 @@ const NewsCardBig = (props) =>{
     
 
     useEffect(()=>{
-        console.log('inside CARD BIG! ')
         updatedAt();
     })
 
@@ -63,7 +62,7 @@ const NewsCardBig = (props) =>{
     return( 
 
         
-        <div className="card mb-3"  onClick={()=>{window.location.href = props.newsList.url }}>
+        <div className="card mb-3 section"  onClick={()=>{window.location.href = props.newsList.url }}>
             {props.newsList 
                 ?
                 (<div> 
@@ -72,21 +71,18 @@ const NewsCardBig = (props) =>{
                       {
                           props.newsList.multimedia?  
                           <img className="card-img-top card-img" src={props.newsList.multimedia[0].url} alt=""/>
-                        :<Skeleton />
+                        :<Skeleton count={5} />
                         }
 
-                     
-                     
-             
           
                      <div className="card-body">
                          {
                               <div> 
-                                     <h5 className="card-title">{props.newsList.title}</h5> 
-                                   { props.newsList.abstract ?<p className="card-text story-abstract">{props.newsList.abstract}</p>:null}
+                                     <h5 className="card-title appText">{props.newsList.title}</h5> 
+                                   { props.newsList.abstract ?<p className="card-text story-abstract innerText">{props.newsList.abstract}</p>:null}
                                      <hr/>
-                                     <p className="card-text">{props.newsList.byline}</p>
-                                     <p className="card-text updated-text appText"><small className="text-muted"> {updated} </small></p>
+                                     <p className="card-text appText ">{props.newsList.byline}</p>
+                                     <p className="card-text updated-text innerText "><small className=""> {updated} </small></p>
                                  </div> 
                             
          

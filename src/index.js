@@ -9,6 +9,8 @@ import RootReducer from './store/reducers';
 import '../src/scss/index.scss';
 import rootSaga from './store/sagas';
 
+import GlobalState from './store/contextState/global_state';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,8 +19,11 @@ const sagaMiddleware = createSagaMiddleware();
  sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
+
     <Provider store={store}>
-           <App />
+          <GlobalState>             
+                <App />
+          </GlobalState>
     </Provider>
            ,
   document.getElementById('root')
