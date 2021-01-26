@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
 
 body {
     background-color: ${({theme}) => theme.body};
+    transition: 0.50s all linear 0.5s 
 }
 
 .appText {

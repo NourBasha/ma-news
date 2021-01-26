@@ -6,7 +6,7 @@ export const darkTheme = {
 
     innerText : '#e0e0e0',
 
-    body: '#000000',
+    body: '#000000e3',
 
     button : '#165452',
 
@@ -22,7 +22,7 @@ export const lightTheme = {
 
     innerText : ' #464646',
 
-    body: '#d8c5c36c',
+    body: '#caaca994',
 
     button : '#873489',
 

@@ -13,8 +13,8 @@ const Routes = (props) => {
                 <Header />
             <Switch>
                       <Route exact path='/' component={DevelopingNews} />
-                      <Route exact  path='/top-stories/:name' render={(target)=> <FirstStylePage target={target}  /> }/>
-                      <Route exact  path='/topStories/:name' render={(target)=> <SecondStylePage target={target}  /> }/>
+                      <Route exact  path='/top-stories/:name' render={ target=> <FirstStylePage target={target}  /> }/>
+                      <Route exact  path='/topStories/:name' render={ target=> <SecondStylePage target={target}  /> }/>
             </Switch>
       </Router>
     </div>

@@ -18,7 +18,7 @@ const Search = (props) => {
     } 
 
     return(
-        <div className='search' >
+        <div className='search'  >
 
             <form className='form-container' onSubmit={handleSubmit} >
 

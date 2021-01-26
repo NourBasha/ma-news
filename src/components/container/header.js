@@ -1,10 +1,13 @@
 
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink, Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setSearchContent, setSearchTiming} from '../../store/actions/actions';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import Context from '../../utils/context';
+
 
 let topics = [ "us", "politics", "health", "arts",  "sundayreview","automobiles", "books", "business", 
 "fashion", "food",  "insider", "magazine", 
@@ -18,6 +21,7 @@ const Header = (props) =>{
         const [menuLink,setMenuLink] = useState('');
         const [menuLinkIndex, setMenuLinkIndex] = useState(-1);
         const [groupNumber,setGroupNumber]= useState(0);
+        const context = useContext(Context);
       
 
         const menuLinkClicked = (e)=>{
@@ -25,15 +29,14 @@ const Header = (props) =>{
             setExpanded(false);
             setMenuLink(e.target.text);
 
-            props.setSearchContentEmpty();
-            props.setSearchContentTimingEmpty();
+            props.setSearchContent(false);
+            props.setSearchContentTiming(false);
 
 
             topics = topics.filter((val,index)=>{
                 if(e){
                     if( val === e.target.text.toLowerCase()){
                         setMenuLinkIndex(index);
-                        console.log(index);
                     }
                 }
                 return val !== e.target.text.toLowerCase();
@@ -70,6 +73,13 @@ const Header = (props) =>{
 
         }
         
+       const topStoriesClicked = (e) =>{
+
+            setExpanded(false);
+            props.setSearchContent(false);
+            props.setSearchContentTiming(false);
+
+       }
        
     return(
         <div className='header'>
@@ -82,11 +92,11 @@ const Header = (props) =>{
                     </Navbar.Brand>           
 
                   
-                        <Nav className='mx-lg-auto header-nav d-flex'>
+                        <Nav className='mx-auto header-nav d-flex'>
                          
                            <NavLink to='/' exact 
                             className='d-inline-block appText link'
-                            onClick={()=>{setExpanded(false)}}>
+                            onClick={topStoriesClicked}>
                                    Top Stories
                             </NavLink>
                          
@@ -95,6 +105,7 @@ const Header = (props) =>{
                                      to={groupNumber ===1 ? {pathname:`/top-stories/${menuLink}`}:
                                       {pathname:`/topStories/${menuLink}`}} 
                                     className='d-inline-block menu-link link ml-3 appText'
+                                    onClick={()=>setExpanded(false)}
                                    >
                             </NavLink>
 
@@ -102,6 +113,9 @@ const Header = (props) =>{
                         
                         </Nav>
 
+
+               
+                        
                                 <Navbar.Toggle aria-controls='#header-collapse' 
                                     className=" toggleButton d-block navbar-dark"
                                     aria-expanded="false"
@@ -115,8 +129,22 @@ const Header = (props) =>{
                 {
                     expand?(
                         <div className='header-links container-fluid' >
+                              <BootstrapSwitchButton
+                                checked={context.theme === 'light' ? false : true}
+
+                                onstyle="dark" 
+                                onlabel='Light theme'
+                                offlabel='Dark theme'
+                                style='theme-switch'
+                                width='50px'
+                                onChange={() => {
+                                context.toggleTheme(); setExpanded(false);
+                                         }}
+                                 />
 
                         <div className='row header-links-expand' style={{height:'100vh'}}>
+                                                             
+                  
                             <div className='col-md-6'>
                                 <ul className=''>
                                     {
@@ -174,8 +202,8 @@ const Header = (props) =>{
 
 const mapDispatchToProps = (dispatch)=>{
     return{
-        setSearchContentEmpty : () => {dispatch(setSearchContent(''))},
-        setSearchContentTimingEmpty : () => {dispatch(setSearchTiming(''))}
+        setSearchContent : (info) => dispatch(setSearchContent(info)),
+        setSearchContentTiming : (info) => dispatch(setSearchTiming(info))
     }
 }
 

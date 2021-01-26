@@ -14,7 +14,6 @@ export const setSearchContent = (payload) =>{
 
 
 
-
 export const setSearchTiming = (payload) =>{
     return{
         type : ACTION_TYPES.SEARCH_TIMING_SAGA,

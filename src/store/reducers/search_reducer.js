@@ -8,6 +8,8 @@ const initialState = {
 
 
 const SearchReducer= (state = initialState, action) =>{
+
+
     switch (action.type) {
         case SEARCH_CONTENT:
             return{

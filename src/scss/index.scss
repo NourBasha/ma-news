@@ -6,7 +6,6 @@ $color-main-soft2:#58010167;
 $color-secondary:#00e7e7;   
 $color-secondary-soft:#1a707075;
 
-
 $color-header-links: #58010181 ;
 $color-header-links-2:#0e7e7e79;   
 
@@ -21,4 +20,5 @@ $color-header-links-2:#0e7e7e79;
 
 @import './components/container/header.scss';
 @import './components/functional/newsCardBig.scss'; 
-@import './components/container/search.scss'
+@import './components/container/search.scss';
+@import './developingNews.scss';
