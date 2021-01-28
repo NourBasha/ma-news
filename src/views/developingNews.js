@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import NewsCardBig from '../components/functional/newsCardBig';
 import {API_KEY} from '../utils/data';
 
@@ -8,14 +8,12 @@ import {connect} from 'react-redux';
 import Search from '../components/container/search';
 import SearchCard from '../components/functional/searchCard';
 
-import Context from '../utils/context';
 
 
 let developingList = [];
 
 const DevelopingNews = (props) =>{
 
-  const context = useContext(Context);
   const [searchState, setSearchState] = useState(false);
 
 
@@ -33,6 +31,7 @@ const DevelopingNews = (props) =>{
           if(res){
             developingList = [];
             developingList = res.data.results;
+            console.log(developingList);
             setDevelopingLoading(false);
             setSearchState(false);
           }
@@ -90,6 +89,74 @@ const DevelopingNews = (props) =>{
 
     return (
      <div className='developing-news-container'>
+
+      <div className='caro'>
+{/* 
+        {
+          !developingLoading ? (<div>
+
+              <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+                    <ol className="carousel-indicators">
+                      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active"></li>
+                      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+                      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+                    </ol>
+                    <div className="carousel-inner">
+                      <div className="carousel-item active">
+                        {
+                          developingList[0]? 
+                            <img src={developingList.multimedia[0].url? developingList[0].multimedia[0].url  :'...'} className="d-block w-100" alt="..."/> 
+                          :null
+                        }
+                      
+                        
+                        <div className="carousel-caption d-none d-md-block">
+                          <h5>First slide label</h5>
+                          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                      </div>
+                      <div className="carousel-item">
+                      {
+                          developingList[1]? 
+                            <img src={developingList.multimedia[1].url? developingList[1].multimedia[0].url  :'...'} className="d-block w-100" alt="..."/> 
+                          :null
+                        }                        <div className="carousel-caption d-none d-md-block">
+                          <h5>Second slide label</h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                      </div>
+                      <div className="carousel-item">
+                      {
+                          developingList[2]? 
+                            <img src={developingList.multimedia[2].url? developingList[2].multimedia[0].url  :'...'} className="d-block w-100" alt="..."/> 
+                          :null
+                        }                        <div className="carousel-caption d-none d-md-block">
+                          <h5>Third slide label</h5>
+                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+                      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span className="visually-hidden">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+                      <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span className="visually-hidden">Next</span>
+                    </a>
+                    </div>
+                </div>)
+          : null
+
+        }
+ */}
+
+     
+
+
+      </div>
+
+        
           <div className=' developing-news container-fluid  ' style={{paddingLeft:'2rem',paddingRight:'2rem'}}>
         
         <div className='row'>

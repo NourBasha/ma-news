@@ -133,8 +133,6 @@ const Header = (props) =>{
                                 checked={context.theme === 'light' ? false : true}
 
                                 onstyle="dark" 
-                                onlabel='Light theme'
-                                offlabel='Dark theme'
                                 style='theme-switch'
                                 width='50px'
                                 onChange={() => {
@@ -145,7 +143,7 @@ const Header = (props) =>{
                         <div className='row header-links-expand' style={{height:'100vh'}}>
                                                              
                   
-                            <div className='col-md-6'>
+                            <div className='col'>
                                 <ul className=''>
                                     {
                                         topics.map((topic,index)=>{
@@ -166,7 +164,7 @@ const Header = (props) =>{
                                     } 
                                 </ul>
                             </div>
-                            <div className='col-md-6'>
+                            <div className='col'>
                                 <ul>
                                     {
                                         topics.map((topic,index)=>{

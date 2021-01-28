@@ -1,0 +1,26 @@
+
+@media (max-width:768px){
+
+    .header { 
+        .header-links {
+
+            .header-links-expand { 
+                margin-top: 30px;
+
+                ul {  
+                    padding: 0;
+                    li{
+                        padding: 10px ;
+                        a {
+                            padding: 0px 10px;
+                            font-size: 14px;      
+                        }
+                       
+                    }
+                }
+    
+            }
+        }
+    }
+
+}
